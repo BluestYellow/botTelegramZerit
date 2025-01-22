@@ -1,9 +1,13 @@
+import os
 import datetime
 import mercadopago
 import telebot
+from dotenv import load_dotenv
 
-sdk = mercadopago.SDK(TOKEN_MERCADOPAGO)
-bot = telebot.TeleBot(TOKEN_BOT)
+load_dotenv()
+
+sdk = mercadopago.SDK(os.getenv('TOKEN_MERCADOPAGO'))
+bot = telebot.TeleBot(os.getenv('TOKEN_BOT'))
 
 def create_payment(value):
     expire = datetime.datetime.now() + datetime.timedelta(days=1)
